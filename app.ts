@@ -87,3 +87,13 @@ function logObject(obj: { a: number } | { b: number }) {
     }
 }
 
+//--------------------------------------------------------------------------------------//
+console.log("work with Literal type")
+
+function fetchWithAuth(url: string, method: 'post' | 'get'): 1 | -1 {
+    return 1
+}
+
+fetchWithAuth('url', 'post')
+let method = 'post'
+fetchWithAuth('url', method as 'post') //need to be very varefull with casts
