@@ -29,3 +29,15 @@ const res = skills
 console.log("print result: ")
 console.log(res);
 //result: Dev! Testing!
+
+//--------------------------------------------------------------------------------------//
+console.log("work with Tuples")
+const skill: [number, string] = [1, 'Dev']
+const skillId = skill[0]
+const skillNamee = skill[1]
+const [id, skillName] = skill;
+
+//spread param
+const arr: [number, string, ...boolean[]] = [1, 'test', true, false, false]
+
+
