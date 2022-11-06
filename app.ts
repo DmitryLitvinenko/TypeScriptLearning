@@ -48,3 +48,18 @@ const skill2: readonly [number, string] = [1, 'Dev']
 //skill2[0] = 2 // we can't override element in the array
 //OR we can use generics
 const skill3: ReadonlyArray<string> = ['Dev', 'DevOps']
+
+//--------------------------------------------------------------------------------------//
+console.log("work with Enums")
+const response1 = {
+    message: 'payment success',
+    statusCode: 1
+}
+enum StatusCode {
+    SUCCESS = 1 ,
+    IN_PROCESS = 2,
+    FAILED = 3
+}
+if (response1.statusCode === StatusCode.SUCCESS) {
+    // ...something
+}
