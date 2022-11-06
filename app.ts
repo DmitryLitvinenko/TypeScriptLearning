@@ -40,4 +40,11 @@ const [id, skillName] = skill;
 //spread param
 const arr: [number, string, ...boolean[]] = [1, 'test', true, false, false]
 
-
+//--------------------------------------------------------------------------------------//
+console.log("work with Readonly")
+const skill1: [number, string] = [1, 'Dev']
+skill1[0] = 2 // we can override element in the array
+const skill2: readonly [number, string] = [1, 'Dev']
+//skill2[0] = 2 // we can't override element in the array
+//OR we can use generics
+const skill3: ReadonlyArray<string> = ['Dev', 'DevOps']
