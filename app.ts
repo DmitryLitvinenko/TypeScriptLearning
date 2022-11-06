@@ -97,3 +97,34 @@ function fetchWithAuth(url: string, method: 'post' | 'get'): 1 | -1 {
 fetchWithAuth('url', 'post')
 let method = 'post'
 fetchWithAuth('url', method as 'post') //need to be very varefull with casts
+
+//--------------------------------------------------------------------------------------//
+console.log("work with Aliases type")
+type httpMethod = 'post' | 'get'
+type coolString = string
+
+function fetchWithAuth2(url: coolString, method: httpMethod): 1 | -1 {
+    return 1
+}
+
+type User = {
+    name: string,
+    age: number,
+    skills: string[]
+}
+type Role = {
+    id: number
+}
+type UserWithMandatoryRole = User & Role
+let userWithRole: UserWithMandatoryRole = {
+    name: 'Flamio',
+    age: 30,
+    skills: ['1', '2'],
+    id: 1
+}
+type UserWithMandatoryNotRole = User | Role
+let userWithRole1: UserWithMandatoryNotRole = {
+    name: 'Flamio',
+    age: 30,
+    skills: ['1', '2'],
+}
