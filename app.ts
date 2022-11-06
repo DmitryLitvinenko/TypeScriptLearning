@@ -55,11 +55,13 @@ const response1 = {
     message: 'payment success',
     statusCode: 1
 }
+
 enum StatusCode {
-    SUCCESS = 1 ,
+    SUCCESS = 1,
     IN_PROCESS = 2,
     FAILED = 3
 }
+
 if (response1.statusCode === StatusCode.SUCCESS) {
     // ...something
 }
