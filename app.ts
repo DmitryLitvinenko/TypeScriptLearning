@@ -128,3 +128,38 @@ let userWithRole1: UserWithMandatoryNotRole = {
     age: 30,
     skills: ['1', '2'],
 }
+
+//--------------------------------------------------------------------------------------//
+console.log("work with Interfaces")
+
+interface User1 {
+    name: string,
+    age: number,
+    skills: string[]
+
+    log: (id: number) => string;
+}
+
+interface Role1 {
+    roleId: number
+}
+
+interface UserWithRole extends User1, Role1 {
+    createdAt: Date
+}
+
+let user1: UserWithRole = {
+    name: 'Flamio',
+    age: 30,
+    skills: ['1', '2'],
+    roleId: 1,
+    createdAt: new Date(),
+
+    log(id) {
+        return ''
+    }
+}
+
+interface UserDic {
+    [index: number]: User
+}
