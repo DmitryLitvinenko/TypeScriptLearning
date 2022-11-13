@@ -302,10 +302,10 @@ function processAction(action: paymentAction) {
     }
 }
 
-function isString (x: string | number): boolean {
+function isString(x: string | number): boolean {
     if (typeof x === 'string') {
         return true
-    } else if (typeof  x=== 'number'){
+    } else if (typeof x === 'number') {
         return false
     }
     generateError('sss') // here we return never. Without this we can't return boolean type
@@ -333,9 +333,45 @@ interface Admin {
 }
 
 //good example of object conversion
-function userToAdmin (user: User): Admin {
+function userToAdmin(user: User): Admin {
     return {
         name: user.name,
         role: 1
+    }
+}
+
+//--------------------------------------------------------------------------------------//
+console.log("work with type Guard")
+
+function logId4(id: string | number) {
+    //   if (typeof  id === 'string') {
+    // this could be replaced with
+    if (isString(id)) {
+        console.log(id)
+    } else if (typeof id === 'number') {
+        console.log(id)
+    }
+}
+
+function isString2(x: string | number): x is string { //type guard
+    return typeof x === 'string'
+}
+
+//example 2 more difficult
+//example 2.1
+function isAdmin(user: User3 | Admin): user is Admin {
+    return 'role' in user
+}
+
+//example 2.2 (2.1 is better)
+function isAdmin2(user: User3 | Admin): user is Admin {
+    return (user as Admin).role !== undefined
+}
+
+function setRoleZero(user: User3 | Admin) {
+    if (isAdmin(user)) {
+        user.role = 0
+    } else {
+        throw new Error("User is not an admin")
     }
 }
