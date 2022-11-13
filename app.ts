@@ -201,6 +201,41 @@ function testPass(user: UserProOpt) {
     const t = user.password?.type
 }
 
-function test(param? : string) {
+function test(param?: string) {
     const t = param ?? multiply(5) // if param is null or undenfined it will run function multiply()
 }
+
+//--------------------------------------------------------------------------------------//
+console.log("work with Void type")
+
+function logId2(id: string | number): void {
+    console.log(id)
+}
+
+const a = logId2(1); //void return type
+
+function multiply2(f: number, s?: number): number | void {
+    if (!s) {
+        return f * f;
+    }
+}
+
+type voidFunc = () => void
+
+const f1: voidFunc = () => {
+
+}
+
+const f2: voidFunc = () => {
+    return true
+}
+const b = f2() // will be void
+
+const skills3 = ['Dev', 'DevOps']
+
+const user3 = {
+    s: ['s']
+}
+skills3.forEach((skill) => user3.s.push(skill)) // void shows, that function can return anything,
+// that why we can do such manipulations
+
