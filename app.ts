@@ -248,7 +248,7 @@ let input: unknown
 input = 3
 input = ['s', 'sdf']
 
-let rest: string = input // Unknown CAN'T be assigne to the type
+//let rest: string = input // Unknown CAN'T be assigne to the type
 
 function run(i: unknown) {
     if (typeof i == 'number') {
@@ -310,3 +310,12 @@ function isString (x: string | number): boolean {
     }
     generateError('sss') // here we return never. Without this we can't return boolean type
 }
+
+//--------------------------------------------------------------------------------------//
+console.log("work with Null")
+
+const n: null = null;
+const n1: any = null;
+//const n2: number = null; can't assign because of param !!!strictNullCheck!!! in the TS config;
+
+
