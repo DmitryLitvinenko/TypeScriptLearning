@@ -318,4 +318,24 @@ const n: null = null;
 const n1: any = null;
 //const n2: number = null; can't assign because of param !!!strictNullCheck!!! in the TS config;
 
+//--------------------------------------------------------------------------------------//
+console.log("work with type conversion")
 
+interface User3 {
+    name: string
+    email: string
+    login: string
+}
+
+interface Admin {
+    name: string
+    role: number
+}
+
+//good example of object conversion
+function userToAdmin (user: User): Admin {
+    return {
+        name: user.name,
+        role: 1
+    }
+}
