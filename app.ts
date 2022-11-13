@@ -239,3 +239,36 @@ const user3 = {
 skills3.forEach((skill) => user3.s.push(skill)) // void shows, that function can return anything,
 // that why we can do such manipulations
 
+//--------------------------------------------------------------------------------------//
+console.log("work with Unknown type")
+// Unknown != any
+
+let input: unknown
+
+input = 3
+input = ['s', 'sdf']
+
+let rest: string = input // Unknown CAN'T be assigne to the type
+
+function run(i: unknown) {
+    if (typeof i == 'number') {
+        i++
+    } else {
+        i
+    }
+}
+
+run(input)
+
+async function getData() {
+    try {
+        await fetch('')
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message)
+        }
+    }
+}
+
+type U1 = unknown | number;
+type I1 = unknown & string;
