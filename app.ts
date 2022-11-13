@@ -272,3 +272,41 @@ async function getData() {
 
 type U1 = unknown | number;
 type I1 = unknown & string;
+
+//--------------------------------------------------------------------------------------//
+console.log("work with Never")
+
+function generateError(message: string): never {
+    throw new Error(message)
+}
+
+function dumpError(): never {
+    // return 'string'; can't return nothing, because return type -> never
+    while (true) {
+    }
+}
+
+type paymentAction = 'refund' | 'checkout' | 'reject'
+
+function processAction(action: paymentAction) {
+    switch (action) {
+        case "refund":
+            // ...
+            break
+        case "checkout":
+            // ...
+            break
+        default:
+            //  const _: never = action; // we can't assign action to never, because "reject" option note used in switch case, but exists. That's type never could be used as additional check
+            throw new Error('Action do not exist')
+    }
+}
+
+function isString (x: string | number): boolean {
+    if (typeof x === 'string') {
+        return true
+    } else if (typeof  x=== 'number'){
+        return false
+    }
+    generateError('sss') // here we return never. Without this we can't return boolean type
+}
