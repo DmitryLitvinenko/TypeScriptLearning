@@ -163,3 +163,44 @@ let user1: UserWithRole = {
 interface UserDic {
     [index: number]: User
 }
+
+//--------------------------------------------------------------------------------------//
+console.log("work with Optional")
+
+interface UserOpt {
+    login: string,
+    password?: string, // ? -> means that field is optional
+}
+
+const userOpt: UserOpt = {
+    login: 'dmitry@flame.yes',
+    password: '1',
+}
+
+const userOpt2: UserOpt = {
+    login: 'dmitry@flame.yes',
+}
+
+function multiply(first: number, second?: number): number {
+    if (!second) {
+        return first + first
+    }
+    return first + second;
+}
+
+multiply(5)
+
+interface UserProOpt {
+    login: string,
+    password?: {
+        type: 'primary' | 'secondary'
+    }
+}
+
+function testPass(user: UserProOpt) {
+    const t = user.password?.type
+}
+
+function test(param? : string) {
+    const t = param ?? multiply(5) // if param is null or undenfined it will run function multiply()
+}
