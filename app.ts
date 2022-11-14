@@ -375,3 +375,29 @@ function setRoleZero(user: User3 | Admin) {
         throw new Error("User is not an admin")
     }
 }
+
+//--------------------------------------------------------------------------------------//
+console.log("SECTION 5 - classes")
+
+//--------------------------------------------------------------------------------------//
+console.log("Class basic")
+
+class User2 {
+    name: string
+
+    constructor(name: string) {
+        this.name = name
+    }
+}
+
+const user2 = new User2("Flame")
+console.log(user2)
+user2.name = "new Flame"
+console.log(user2)
+
+
+class Admin {
+    role!: number; // if strictPropertyInitialization is true in tsconfig, sign " ! " telling use, that there is no need to init role function
+}
+const admin = new Admin();
+admin.role = 1
