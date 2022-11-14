@@ -399,5 +399,35 @@ console.log(user2)
 class Admin {
     role!: number; // if strictPropertyInitialization is true in tsconfig, sign " ! " telling use, that there is no need to init role function
 }
+
 const admin = new Admin();
 admin.role = 1
+
+//--------------------------------------------------------------------------------------//
+console.log("Constructor basic")
+
+class User3 {
+    name: string
+    age: number
+
+    //overload, this example could be used only for overload with 2-3 params
+    constructor()
+    constructor(name: string)
+    constructor(age: number)
+    constructor(name: string, age: number)
+    constructor(ageOrName?: string | number, age?: number) {
+        if (typeof ageOrName === 'string') {
+            this.name = ageOrName
+        } else if (typeof ageOrName === 'number') {
+            this.age = ageOrName
+        }
+        if (typeof age === 'number') {
+            this.age = age;
+        }
+    }
+}
+
+const user4 = new User3()
+const user5 = new User3("Flame")
+const user6 = new User3(33)
+const user7 = new User3("Flame", 30)
