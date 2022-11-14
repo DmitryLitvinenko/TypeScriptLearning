@@ -431,3 +431,43 @@ const user4 = new User3()
 const user5 = new User3("Flame")
 const user6 = new User3(33)
 const user7 = new User3("Flame", 30)
+
+//--------------------------------------------------------------------------------------//
+console.log("Methods basic")
+
+enum PaymentStatus {
+    Holded,
+    Processed,
+    Reversed,
+}
+
+class Payment {
+    id: number;
+    status: PaymentStatus
+    createdAt: Date
+    updatedAt: Date
+
+    constructor(id: number) {
+        this.id = id;
+        this.createdAt = new Date()
+        this.status = PaymentStatus.Holded
+    }
+
+    getPaymentLifeTime(): number {
+        return new Date().getTime() - this.createdAt.getTime()
+    }
+
+    unHoldPayment() {
+        if (this.status == PaymentStatus.Processed) {
+            throw new Error("Payment in procces and could not be returned")
+        }
+        this.status = PaymentStatus.Reversed
+        this.updatedAt = new Date;
+    }
+}
+
+const payment = new Payment(1)
+payment.unHoldPayment()
+console.log(payment)
+const time = payment.getPaymentLifeTime()
+console.log(time)
