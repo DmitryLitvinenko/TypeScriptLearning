@@ -593,3 +593,59 @@ class PersistedPayment extends Payment1 {
         }
     }
 }
+
+//--------------------------------------------------------------------------------------//
+console.log("Composition vs extends")
+
+class User7 {
+    name: string
+
+    constructor(name: string) {
+        this.name = name
+    }
+}
+
+//!!!!!!! THIS IS EXTENDS
+class Users7 extends Array<User7> {
+    searchByName(name: string) {
+        return this.filter(u => u.name === name)
+    }
+
+    override toString(): string {
+        return this.map(u => u.name).join(', ')
+    }
+}
+
+const users7 = new Users7()
+users7.push(new User7('Dmitry'))
+users7.push(new User7('Flame'))
+console.log(users7.toString())  // because we override and join toString will return -> Dmitry, Flame
+
+//THIS IS COMPOSITION
+class UserList {
+    users: User7[]
+
+    push(u: Users7) {
+        this.users.push(u)
+    }
+}
+
+class Payment2 {
+    date: Date
+}
+
+//!!!! THIS IS EXTENDS and example is bad example
+class UserWithPayment extends Payment2 {
+    name: string
+}
+
+//!!!! THIS IS COMPOSITION this is good example,  because entity payment do not have dependency with UserWithPayment2
+class UserWithPayment2 {
+    user: User7
+    payment: Payment2
+
+    constructor(user: User7, payment: Payment2) {
+        this.user = user
+        this.payment = payment
+    }
+}
