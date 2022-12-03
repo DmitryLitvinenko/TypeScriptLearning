@@ -488,3 +488,31 @@ class User4 {
         }
     }
 }
+
+//--------------------------------------------------------------------------------------//
+console.log("Getter n setter")
+
+//!!!! Getter n Setter are useful for non async functions in case of password we must encrypt data,
+//!!!! that why we can't use there get or set because method must be async
+class User5 {
+    _login: string
+    password: string
+
+    set login(l: string) {
+        this._login = 'user-' + l;
+    }
+
+    get login() {
+        return this._login
+    }
+
+    async getPassword(p: string) {
+        //bla-bla
+    }
+
+}
+
+const user8 = new User5()
+user8.login = "myLogin"
+console.log(user8)
+console.log(user8.login)
