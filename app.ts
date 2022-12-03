@@ -516,3 +516,43 @@ const user8 = new User5()
 user8.login = "myLogin"
 console.log(user8)
 console.log(user8.login)
+
+//--------------------------------------------------------------------------------------//
+console.log("Class Interfaces implementation")
+
+interface ILogger {
+    log: (...args: any[]) => void
+
+    error(...args: any[]): void
+}
+
+class Logger implements ILogger {
+
+    log(args: any): void {
+        console.log(...args)
+    }
+
+    async error(...args: any[]): Promise<void> {
+        console.log(...args)
+    }
+}
+
+interface IPayable {
+    pay(paymentId: number): void
+
+    price?: number
+}
+
+interface IDeletable {
+    delete(): void
+}
+
+class User6 implements IPayable, IDeletable {
+    pay(paymentId: number | string): void { //we can extend parameters in class
+    }
+
+    delete(): void {
+        throw new Error('Method not implemented ')
+    }
+}
+
