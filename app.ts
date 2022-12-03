@@ -471,3 +471,20 @@ payment.unHoldPayment()
 console.log(payment)
 const time = payment.getPaymentLifeTime()
 console.log(time)
+
+//--------------------------------------------------------------------------------------//
+console.log("Methods overload")
+
+class User4 {
+    skills: string[]
+
+    addSkill(skill: string): void
+    addSkill(skills: string[]): void
+    addSkill(skillOrSkills: string | string []): void {
+        if (typeof skillOrSkills == 'string') {
+            this.skills.push(skillOrSkills)
+        } else {
+            this.skills.concat(skillOrSkills)
+        }
+    }
+}
