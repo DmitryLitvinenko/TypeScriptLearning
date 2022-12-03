@@ -625,7 +625,7 @@ console.log(users7.toString())  // because we override and join toString will re
 class UserList {
     users: User7[]
 
-    push(u: Users7) {
+    push(u: User7) {
         this.users.push(u)
     }
 }
