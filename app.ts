@@ -649,3 +649,27 @@ class UserWithPayment2 {
         this.payment = payment
     }
 }
+
+//--------------------------------------------------------------------------------------//
+console.log("Encapsulation lesson")
+
+class Vehicle {
+    public make: string //by default it's public
+    private damages: string[]
+    private _model: string
+    protected run: number
+    #price: number // private with Java Script
+
+    addDamage(damage: string) {
+        this.damages.push(damage)
+    }
+
+    get model(): string {
+        return this._model;
+    }
+
+    set model(value: string) {
+        this._model = value;
+    }
+
+}
