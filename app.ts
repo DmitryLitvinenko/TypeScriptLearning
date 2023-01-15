@@ -748,3 +748,35 @@ cart.deleteProductById(1)
 cart.setDelivery(new HomeDelivery(new Date(), "Ropazu Iela 1"))
 console.log(cart.getSum())
 console.log(cart.checkOut())
+
+
+//--------------------------------------------------------------------------------------//
+console.log("this typisation")
+
+class UserBuilder {
+    name: string
+
+    setName(name: string): this {
+        this.name = name
+        return this
+    }
+
+    isAdmin(): this is AdminBuilder {
+        return this instanceof AdminBuilder
+    }
+}
+
+class AdminBuilder extends UserBuilder {
+    roles: string []
+}
+
+const res2 = new UserBuilder().setName("Dmitry2")
+const res3 = new AdminBuilder().setName("Dmitry3")
+
+let user9: UserBuilder | AdminBuilder = new UserBuilder()
+
+if (user9.isAdmin()) {
+    console.log(user9)
+} else {
+    console.log(user9)
+}
