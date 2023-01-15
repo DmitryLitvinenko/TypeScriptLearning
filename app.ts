@@ -780,3 +780,4 @@ if (user9.isAdmin()) {
 } else {
     console.log(user9)
 }
+
