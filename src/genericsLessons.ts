@@ -58,3 +58,31 @@ console.log(toString(3))
 console.log(toString(true))
 console.log(toString(['a', 'b']))
 console.log(toString({a: 1}))
+
+console.log("Generics: using generics in types")
+
+function getSplitedHalf2<T>(data: Array<T>): Array<T> {
+    const l = data.length / 2;
+    return data.splice(0, 1)
+}
+
+getSplitedHalf2<number>([1, 2, 3])
+const split: <T> (data: Array<T>) => Array<T> = getSplitedHalf;
+
+interface ILogLine<T> {
+    timeStamp: Date
+    data: T
+}
+
+type LogLineType<T> = {
+    timeStamp: Date
+    data: T
+}
+
+//with an INTERFACE (ILogLine) or TYPE (LogLineType) we can add type to the data field
+const logLine: ILogLine<{ a: number }> = {
+    timeStamp: new Date(),
+    data: {
+        a: 1
+    }
+}
