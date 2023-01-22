@@ -23,7 +23,7 @@ const result = logMiddleWare<number>(10)
 console.log(result)
 
 //allows to split any array with generics
-function getSplitedHalf<T>(data: Array<T>): Aarray <T> {
+function getSplitedHalf<T>(data: Array<T>): Array <T> {
     const l = data.length / 2;
     return data.splice(0, 1)
 }
