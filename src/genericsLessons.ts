@@ -108,7 +108,7 @@ const lcv = kmToMiles(new LCV())
 //-------
 
 //this function is useless, only for example, how to use few generics
-function logId<T extends string | number, Y>(id: T, additionalData: Y): { id: T, data: Y } {
+function logId5<T extends string | number, Y>(id: T, additionalData: Y): { id: T, data: Y } {
     console.log(id)
     console.log(additionalData)
     return {id, data: additionalData}
@@ -141,3 +141,51 @@ class HTTPResponse<F> extends Resp<string, number> {
 }
 
 const response2 = new HTTPResponse();
+
+console.log("Generics: mixins")
+
+type Constructor = new (...args: any[]) => {}
+type GConstructor<T = {}> = new (...args: any[]) => T
+
+class List {
+    constructor(public items: string[]) {
+    }
+}
+
+class Accordion {
+    isOpened: boolean
+}
+
+type ListType = GConstructor<List>
+type AccordionType = GConstructor<Accordion>
+
+class ExtendedListClass extends List {
+    first() {
+        return this.items[0]
+    }
+}
+
+// same functionality with MIXINS
+//-----
+//Sometimes Mixins function writing with big letter
+function ExtendedList<TBase extends ListType & AccordionType>(Base: TBase) {
+    return class ExtendedList extends Base {
+        first() {
+            return this.items[0]
+        }
+    }
+}
+
+class AccordionList {
+    isOpened: boolean
+
+    constructor(public items: string[]) {
+    }
+}
+
+const list = ExtendedList(AccordionList)
+const res4 = new list(['first', 'second'])
+console.log(res4.first())
+
+//-----
+
