@@ -21,3 +21,25 @@ const user11: IUser11 = {
 const userName = getValue(user11, 'name')
 
 console.log("Typeof lesson")
+
+let strOrNum: string | number
+if (Math.random() > 0.5) {
+    strOrNum = 5
+} else {
+    strOrNum = 'str'
+}
+
+let str2OrNum: typeof strOrNum
+
+const user12 = {
+    name: 'Dmitry'
+}
+
+type keyOfUser = keyof typeof user12;
+
+enum Direction {
+    Up,
+    Down
+}
+
+type d = keyof typeof Direction
