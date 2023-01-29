@@ -43,3 +43,27 @@ enum Direction {
 }
 
 type d = keyof typeof Direction
+
+console.log("Indexed access types lesson")
+
+interface Role2 {
+    name: string
+}
+
+interface User13 {
+    name: string;
+    roles: Role[]
+}
+
+const user13: User13 = {
+    name: 'Dmitry',
+    roles: []
+}
+
+const nameUser13 = user13['name']
+type rolesType = User13['roles']
+
+type roleType = User13['roles'][number] //getting type from array
+
+const roles = ['admin', 'user', 'super-user'] as const
+type roleTypes = typeof roles[number] // transforming object to union type
